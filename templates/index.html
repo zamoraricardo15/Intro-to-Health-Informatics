@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Covid-19 Misinformation Detection System</title>
+  <meta charset="UTF-8">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+ <div class="login">
+	<h1>Covid-19 Misinformation Detection System</h1>
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea  name="message" rows="6" cols="50" required="required" style="font-size: 20pt"></textarea>
+		<br> </br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Analyze</button>
+        	<div class="results">
+	{% if prediction == ['FAKE']%}
+	<h2 style="color:rgb(250, 36, 36);">Alert! Looks like a fake news</h2>
+	{% elif prediction == ['REAL']%}
+				<h2 style="color:rgb(2, 59, 2);"><b>Looks like a real news</b></h2>
+	{% endif %}
+</div>
